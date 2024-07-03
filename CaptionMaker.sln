@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Core", "CaptionMaker.Core\CaptionMaker.Core.csproj", "{1FBCAC47-90C5-4DE2-B6E6-B076E12A0FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Cli", "CaptionMaker.Cli\CaptionMaker.Cli.csproj", "{14DD7882-69E2-4515-B9A6-78D597C2BA7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Tests", "CaptionMaker.Tests\CaptionMaker.Tests.csproj", "{16AF73CF-FDE7-4BAB-B906-DC255430B656}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FBCAC47-90C5-4DE2-B6E6-B076E12A0FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBCAC47-90C5-4DE2-B6E6-B076E12A0FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBCAC47-90C5-4DE2-B6E6-B076E12A0FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBCAC47-90C5-4DE2-B6E6-B076E12A0FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DD7882-69E2-4515-B9A6-78D597C2BA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DD7882-69E2-4515-B9A6-78D597C2BA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DD7882-69E2-4515-B9A6-78D597C2BA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DD7882-69E2-4515-B9A6-78D597C2BA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16AF73CF-FDE7-4BAB-B906-DC255430B656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AF73CF-FDE7-4BAB-B906-DC255430B656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AF73CF-FDE7-4BAB-B906-DC255430B656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AF73CF-FDE7-4BAB-B906-DC255430B656}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
