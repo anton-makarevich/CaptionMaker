@@ -5,7 +5,9 @@ using Whisper.net.Ggml;
 var modelProvider = new ModelProvider();
 var speechRecognizer = new SpeechRecognizer();
 var structuriser = new CaptionStructuriser();
-var captionMaker = new CaptionMaker.Core.CaptionMaker(modelProvider, speechRecognizer, structuriser);
+var spellingChecker = new SpellingChecker();
+var postProcessors = new List<ICaptionsPostProcessor> { structuriser, spellingChecker };
+var captionMaker = new CaptionMaker.Core.CaptionMaker(modelProvider, speechRecognizer);
 
 var parameters = new CaptionParameters
 {
@@ -14,7 +16,7 @@ var parameters = new CaptionParameters
     ModelType = GgmlType.LargeV2
 };
 
-var captions = await captionMaker.CreateCaption(parameters);
+var captions = await captionMaker.CreateCaption(parameters, postProcessors);
 
 foreach (var captionLine in captions)
 {

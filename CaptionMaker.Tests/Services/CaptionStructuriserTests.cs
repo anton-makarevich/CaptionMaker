@@ -7,10 +7,10 @@ public class CaptionStructuriserTests
 {
     [Theory]
     [MemberData(nameof(GetTestCases))]
-    public void TestProcessCaptions(List<CaptionLine> captions, List<CaptionLine> expected)
+    public async Task TestProcessCaptions(List<CaptionLine> captions, List<CaptionLine> expected)
     {
         var processor = new CaptionStructuriser();
-        var result = processor.ProcessCaptions(captions);
+        var result = await processor.ProcessCaptions(captions);
 
         Assert.Equal(expected.Count, result.Count);
         for (var i = 0; i < expected.Count; i++)
