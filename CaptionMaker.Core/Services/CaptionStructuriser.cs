@@ -2,13 +2,16 @@
 
 namespace CaptionMaker.Core.Services;
 
-public class CaptionStructuriser
+public class CaptionStructuriser : ICaptionsPostProcessor
 {
-    public List<CaptionLine> ProcessCaptions(List<CaptionLine> captions)
+    public Task<List<CaptionLine>> ProcessCaptions(List<CaptionLine> captions)
     {
-        var processed = CombineIntoCompleteSentences(captions);
-        processed = AdjustSegmentLengths(processed);
-        return processed;
+        return Task.Run(() =>
+        {
+            var processed = CombineIntoCompleteSentences(captions);
+            processed = AdjustSegmentLengths(processed);
+            return processed;
+        });
     }
 
     private static List<CaptionLine> CombineIntoCompleteSentences(List<CaptionLine> captions)

@@ -7,29 +7,31 @@ public class CaptionMaker
 {
     private readonly ModelProvider _modelProvider;
     private readonly SpeechRecognizer _speechRecognizer;
-    private readonly CaptionStructuriser _captionStructuriser;
 
     public CaptionMaker(
         ModelProvider modelProvider,
-        SpeechRecognizer speechRecognizer,
-        CaptionStructuriser captionStructuriser)
+        SpeechRecognizer speechRecognizer)
     {
         _modelProvider = modelProvider;
         _speechRecognizer = speechRecognizer;
-        _captionStructuriser = captionStructuriser;
     }
-    
-    public async Task<List<CaptionLine>> CreateCaption(CaptionParameters parameters)
+
+    public async Task<List<CaptionLine>> CreateCaption(CaptionParameters parameters,
+        List<ICaptionsPostProcessor> processors)
     {
         var model = await _modelProvider.CheckModel(parameters.ModelType);
         var audioFilePath = parameters.AudioFilePath;
         var captions = await _speechRecognizer.Recognize(audioFilePath, model, parameters.Language);
-        foreach (var captionLine in captions)
+        
+        foreach (var processor in processors)
         {
-            Console.WriteLine($"{captionLine.Start} -> {captionLine.End}: {captionLine.Text}");
+            captions = await processor.ProcessCaptions(captions);
+            foreach (var captionLine in captions)
+            {
+                Console.WriteLine($"{captionLine.Start} -> {captionLine.End}: {captionLine.Text}");
+            }
         }
-        captions = _captionStructuriser.ProcessCaptions(captions);
+
         return captions;
     }
-    
 }

@@ -25,7 +25,7 @@ public class SpeechRecognizer
                 Start = result.Start,
                 End = result.End
             });
-            Console.WriteLine($"{result.End}");
+            Console.WriteLine($"{result.Start} -> {result.End}: {result.Text}");
         }
         return captions;
     }
