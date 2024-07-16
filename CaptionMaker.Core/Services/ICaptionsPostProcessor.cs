@@ -4,5 +4,7 @@ namespace CaptionMaker.Core.Services;
 
 public interface ICaptionsPostProcessor
 {
-    public Task<List<CaptionLine> > ProcessCaptions(List<CaptionLine> captions);
+    public Task<CaptionResult> ProcessCaptions(List<CaptionLine> captions);
+    
+    public string Name { get; }
 }

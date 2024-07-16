@@ -7,6 +7,8 @@ public class CaptionMaker
 {
     private readonly ModelProvider _modelProvider;
     private readonly SpeechRecognizer _speechRecognizer;
+    
+    public List<CaptionResult> ProcessedCaptions { get; set; } = [];
 
     public CaptionMaker(
         ModelProvider modelProvider,
@@ -21,15 +23,17 @@ public class CaptionMaker
     {
         var model = await _modelProvider.CheckModel(parameters.ModelType);
         var audioFilePath = parameters.AudioFilePath;
+
+        ProcessedCaptions = new List<CaptionResult>();
+        
         var captions = await _speechRecognizer.Recognize(audioFilePath, model, parameters.Language);
+        ProcessedCaptions.Add(new CaptionResult("Raw", captions));
         
         foreach (var processor in processors)
         {
-            captions = await processor.ProcessCaptions(captions);
-            foreach (var captionLine in captions)
-            {
-                Console.WriteLine($"{captionLine.Start} -> {captionLine.End}: {captionLine.Text}");
-            }
+            var result = await processor.ProcessCaptions(captions);
+            ProcessedCaptions.Add(result);
+            captions = result.Captions;
         }
 
         return captions;

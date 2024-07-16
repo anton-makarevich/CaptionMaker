@@ -5,7 +5,7 @@ namespace CaptionMaker.Core.Services;
 
 public class SpellingChecker:ICaptionsPostProcessor
 {
-    public async Task<List<CaptionLine>> ProcessCaptions(List<CaptionLine> captions)
+    public async Task<CaptionResult> ProcessCaptions(List<CaptionLine> captions)
     {
         await using var dictionaryStream = File.OpenRead("be.dic");
         await using var affixStream = File.OpenRead("be.aff");
@@ -25,8 +25,8 @@ public class SpellingChecker:ICaptionsPostProcessor
                 Console.WriteLine($"{result.Info.ToString()}");
                 if (!result.Correct)
                 {
-                    var suggestions = dictionary.Suggest(trimmedWord);
-                    if (!suggestions.Any()) continue;
+                    var suggestions = dictionary.Suggest(trimmedWord).ToList();
+                    if (suggestions.Count == 0) continue;
                     Console.WriteLine($"suggestions for {trimmedWord} are {string.Join(", ", suggestions)}");
                     processedCaptionLine.Text=processedCaptionLine.Text.Replace(trimmedWord, suggestions.First());
                 }
@@ -34,6 +34,8 @@ public class SpellingChecker:ICaptionsPostProcessor
             processed.Add(processedCaptionLine);
         }
 
-        return processed;
+        return new CaptionResult(Name, processed);
     }
+
+    public string Name { get; } = "Hunspell SpellChecker";
 }
