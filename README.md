@@ -36,6 +36,10 @@ You will need to review the outputs and select the one you want to be saved as a
 It works exactly the same as the CLI application, but it provides a graphical user interface. The first thing you fill need to specify the audio file either with a button/file picker or just by copy/pasting the path into the corresponding field.
 Once processed the names of the results will be displayed on the left side of the screen, by selecting the name you can review the captions and save selected captions to an SRT file. 
 
+## Other languages
+As stated the initial version only suports recognizing Belarusian language (as there are a lot of tools that work with other languages already). But it will be a configurable parameter in the future versions. For now if you need another language you can just change it in the code (of either CLI or GUI application). Search for "be" in the configuration we pass to the CaptionMaker instance and replace it with the code of your language. First verify if the language is supported by OpenAI Whisper model.
 
+## License
+As this project is basically a wrapper around the [Whisper.net](https://github.com/ggerganov/whisper.cpp) library, it is using the same MIT license.
 
 
