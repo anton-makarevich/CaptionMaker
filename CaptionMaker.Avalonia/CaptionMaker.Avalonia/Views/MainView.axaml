@@ -20,7 +20,9 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="15">
             <CheckBox IsChecked="{Binding IsStructorizerActive}" Content="Improve captions structure"/>
             <CheckBox IsChecked="{Binding IsSpellCheckerActive}" Content="Improve spelling (might get it worse :D)"/>
-            <Button Content="Process" IsEnabled="{Binding CanProcess}" Command="{Binding ProcessMediaFileCommand}"/>
+            <Button Content="Process wav" IsEnabled="{Binding CanProcess}" Command="{Binding ProcessMediaFileCommand}"/>
+            <Label Content="or"/>
+            <Button Content="Open existing SRT" Click="OpenSrt"/>
         </StackPanel>
         <StackPanel
             Grid.Row="2" 

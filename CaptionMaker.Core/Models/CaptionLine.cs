@@ -3,6 +3,6 @@
 public class CaptionLine
 {
     public required string Text { get; set; }
-    public TimeSpan Start { get; init; }
-    public TimeSpan End { get; init; }
+    public TimeSpan Start { get; set; }
+    public TimeSpan End { get; set; }
 }
