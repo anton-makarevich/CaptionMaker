@@ -6,15 +6,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Cli", "Caption
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Tests", "CaptionMaker.Tests\CaptionMaker.Tests.csproj", "{16AF73CF-FDE7-4BAB-B906-DC255430B656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Avalonia", "AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia.csproj", "{1334B048-C94A-47BD-BA9E-85403F78D08D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Avalonia", "CaptionMaker.Avalonia\CaptionMaker.Avalonia\CaptionMaker.Avalonia.csproj", "{1334B048-C94A-47BD-BA9E-85403F78D08D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Avalonia.Android", "AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia.Android\AvaloniaApplication.Avalonia.Android.csproj", "{3C86C44F-4451-48D0-A20B-A1A1BC218E97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Avalonia.Android", "CaptionMaker.Avalonia\CaptionMaker.Avalonia.Android\CaptionMaker.Avalonia.Android.csproj", "{3C86C44F-4451-48D0-A20B-A1A1BC218E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Avalonia.Desktop", "AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia.Desktop\AvaloniaApplication.Avalonia.Desktop.csproj", "{70A65522-A49F-40F2-AE01-B88A55A4CE74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Avalonia.Desktop", "CaptionMaker.Avalonia\CaptionMaker.Avalonia.Desktop\CaptionMaker.Avalonia.Desktop.csproj", "{70A65522-A49F-40F2-AE01-B88A55A4CE74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Avalonia.iOS", "AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia.iOS\AvaloniaApplication.Avalonia.iOS.csproj", "{481977B6-1A42-4F03-B38C-794785517AAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Avalonia.iOS", "CaptionMaker.Avalonia\CaptionMaker.Avalonia.iOS\CaptionMaker.Avalonia.iOS.csproj", "{481977B6-1A42-4F03-B38C-794785517AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication.Avalonia.Browser", "AvaloniaApplication.Avalonia\AvaloniaApplication.Avalonia.Browser\AvaloniaApplication.Avalonia.Browser.csproj", "{5AD7D3B4-21E3-4277-84D9-988B2E5FF3BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptionMaker.Avalonia.Browser", "CaptionMaker.Avalonia\CaptionMaker.Avalonia.Browser\CaptionMaker.Avalonia.Browser.csproj", "{5AD7D3B4-21E3-4277-84D9-988B2E5FF3BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
