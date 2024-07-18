@@ -28,18 +28,18 @@ If you need to run on any other platform, you will need to clone the repo and bu
 Before launching the application, you need to have your audio file ready. For now we only support wav files with 16kHz sample rate. Please use your favorite audio converter (i.e. ffmpeg, Audacity etc) to convert your audio/video file to that format.
 
 ### CLI 
-Just launch the application and follow the instructions. On first run the app fill need to download the large whisper model which is more than 1GB in size. Depending on your connection it might take some time, please be patient and don't close the app, there is no appropriate indication about the progress yet.
+Just launch the application and follow the instructions. On first run the app will need to download the large whisper model which is more than 1GB in size. Depending on your connection it might take some time, please be patient and don't close the app, there is no appropriate indication about the progress yet.
 Once the recognition is done, the results will be presented in the console. The raw output from the whisper model will be marked as RAW, if any postprocessors were applied the results will be marked a corresponding processor name.
 You will need to review the outputs and select the one you want to be saved as an SRT file. The file will be saved in the same location where the audio file is located just with .srt extension.
 
 ### GUI(Avalonia)
-It works exactly the same as the CLI application, but it provides a graphical user interface. The first thing you fill need to specify the audio file either with a button/file picker or just by copy/pasting the path into the corresponding field.
+It works exactly the same as the CLI application, but it provides a graphical user interface. The first thing you will need to specify the audio file either with a button/file picker or just by copy/pasting the path into the corresponding field.
 Once processed the names of the results will be displayed on the left side of the screen, by selecting the name you can review the captions and save selected captions to an SRT file. 
 
 ## Other languages
 As stated the initial version only suports recognizing Belarusian language (as there are a lot of tools that work with other languages already). But it will be a configurable parameter in the future versions. For now if you need another language you can just change it in the code (of either CLI or GUI application). Search for "be" in the configuration we pass to the CaptionMaker instance and replace it with the code of your language. First verify if the language is supported by OpenAI Whisper model.
 
 ## License
-As this project is basically a wrapper around the [Whisper.net](https://github.com/ggerganov/whisper.cpp) library, it is using the same MIT license.
+As this project is basically a wrapper around the [Whisper.cpp](https://github.com/ggerganov/whisper.cpp) library, it is using the same MIT license.
 
 
