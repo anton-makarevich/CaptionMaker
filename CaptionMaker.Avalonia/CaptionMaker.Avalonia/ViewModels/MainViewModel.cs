@@ -90,12 +90,12 @@ public class MainViewModel : BaseViewModel
             
         }
         var results =await _captionMaker.CreateCaption(parameters, postProcessors);
-        ProcessedCaptions = [];
+        var processedCaptions = new List<CaptionResultViewModel>();
         foreach (var captionResult in _captionMaker.ProcessedCaptions)
         {
-            ProcessedCaptions.Add(new CaptionResultViewModel(captionResult));
+            processedCaptions.Add(new CaptionResultViewModel(captionResult));
         }
-        
+        ProcessedCaptions=processedCaptions;
         IsBusy = false;
     }
     
