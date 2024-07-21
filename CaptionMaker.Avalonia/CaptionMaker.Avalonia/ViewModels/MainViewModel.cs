@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using AsyncAwaitBestPractices.MVVM;
 using CaptionMaker.Core.Models;
@@ -16,7 +17,8 @@ public class MainViewModel : BaseViewModel
     private string _mediaFile="";
     private bool _isStructorizerActive=true;
     private bool _isSpellCheckerActive=false;
-    private CaptionResult? _selectedCaptionResult;
+    private CaptionResultViewModel? _selectedCaptionResult;
+    private List<CaptionResultViewModel> _processedCaptions;
 
     public MainViewModel(CaptionMaker.Core.CaptionMaker captionMaker, SrtWriter srtWriter)
     {
@@ -46,9 +48,13 @@ public class MainViewModel : BaseViewModel
         set => SetProperty(ref _isSpellCheckerActive, value);
     }
 
-    public List<CaptionResult> ProcessedCaptions => _captionMaker.ProcessedCaptions;
+    public List<CaptionResultViewModel> ProcessedCaptions
+    {
+        get => _processedCaptions; 
+        set => SetProperty(ref _processedCaptions, value);
+    }
 
-    public CaptionResult? SelectedCaptionResult
+    public CaptionResultViewModel? SelectedCaptionResult
     {
         get => _selectedCaptionResult;
         set
@@ -84,7 +90,12 @@ public class MainViewModel : BaseViewModel
             
         }
         var results =await _captionMaker.CreateCaption(parameters, postProcessors);
-        NotifyPropertyChanged(nameof(ProcessedCaptions));
+        var processedCaptions = new List<CaptionResultViewModel>();
+        foreach (var captionResult in _captionMaker.ProcessedCaptions)
+        {
+            processedCaptions.Add(new CaptionResultViewModel(captionResult));
+        }
+        ProcessedCaptions=processedCaptions;
         IsBusy = false;
     }
     
@@ -93,6 +104,18 @@ public class MainViewModel : BaseViewModel
     private async Task WriteSrt()
     {
         var filePath = Path.ChangeExtension(MediaFile, ".srt");
-        await _srtWriter.WriteSrt(filePath, SelectedCaptionResult.Captions);
+        if (SelectedCaptionResult != null) await _srtWriter
+            .WriteSrt(filePath, SelectedCaptionResult
+                .Captions
+                .Select(vm=>vm.CaptionLine)
+                .ToList());
+    }
+
+    public async Task LoadSrtFile(string pathToSrt)
+    {
+        MediaFile = pathToSrt;
+        var captions = await CaptionFactory.CreateFromSrt(pathToSrt);
+        ProcessedCaptions = [new CaptionResultViewModel(new CaptionResult(Path.GetFileName(pathToSrt), captions))];
+        SelectedCaptionResult = ProcessedCaptions[0];
     }
 }

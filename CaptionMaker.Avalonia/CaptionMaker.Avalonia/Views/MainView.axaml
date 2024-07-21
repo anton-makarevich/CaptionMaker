@@ -20,7 +20,9 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="15">
             <CheckBox IsChecked="{Binding IsStructorizerActive}" Content="Improve captions structure"/>
             <CheckBox IsChecked="{Binding IsSpellCheckerActive}" Content="Improve spelling (might get it worse :D)"/>
-            <Button Content="Process" IsEnabled="{Binding CanProcess}" Command="{Binding ProcessMediaFileCommand}"/>
+            <Button Content="Process wav" IsEnabled="{Binding CanProcess}" Command="{Binding ProcessMediaFileCommand}"/>
+            <Label Content="or"/>
+            <Button Content="Open existing SRT" Click="OpenSrt"/>
         </StackPanel>
         <StackPanel
             Grid.Row="2" 
@@ -44,15 +46,17 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             
-            <ListBox Grid.Column="1"
+            <ListBox x:Name="CaptionsList" Grid.Column="1"
                 DataContext="{Binding SelectedCaptionResult}"
                 ItemsSource="{Binding Captions}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="1*,1*,5*">
+                        <Grid ColumnDefinitions="1*,1*,5*,Auto,Auto">
                             <TextBox Text="{Binding Start}"/>
                             <TextBox Grid.Column="1" Text="{Binding End}"/>
                             <TextBox Grid.Column="2" Text="{Binding Text}"/>
+                            <Button Grid.Column="3" Content="X" Command="{Binding DeleteLineCommand}"/>
+                            <Button Grid.Column="4" Content="&lt;-" Click="InsertSrt"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
